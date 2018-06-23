@@ -1,12 +1,17 @@
 <template>
-  <div class="page">
+  <div class="page container">
     <div class="row">
+      <search-form :onSearch="searchLocationWeather" />
+    </div>
+    <div class="row" v-if="loading">
+      <div class="col-sm-4 col-md-4">
+        loading
+      </div>
+    </div>
+    <div class="row" v-else>
       <div class="col-sm-4 col-md-4" v-for="weather in weatherData">
         <weather :data="weather" />
       </div>
-    </div>
-    <div class="row">
-      <search-form :onSearch="searchLocationWeather" />
     </div>
   </div>
 </template>
@@ -23,7 +28,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      weatherData: "homeWeatherData"
+      weatherData: "homeWeatherData",
+      loading: 'loading'
     })
   },
   methods: {
@@ -39,7 +45,7 @@ export default {
 </script>
 
 <style>
-#searchForm {
-  margin: 0 auto;
+.page {
+  margin: 20px 0;
 }
 </style>
