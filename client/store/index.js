@@ -33,17 +33,18 @@ const mutations = {
   }
 }
 
+
 const actions = {
   async fetchHomeWeather ({ commit }) {
     commit(SET_LOADING, true)
     try {
       const data = await Promise.all([
-        WeatherResource.getLocationWeather('2344116'),
-        WeatherResource.getLocationWeather('638242'),
-        WeatherResource.getLocationWeather('44418'),
-        WeatherResource.getLocationWeather('565346'),
-        WeatherResource.getLocationWeather('560743'),
-        WeatherResource.getLocationWeather('9807')
+        WeatherResource.getLocationWeather('2344116'), // Istanbul
+        WeatherResource.getLocationWeather('638242'), // Berlin
+        WeatherResource.getLocationWeather('44418'), // London
+        WeatherResource.getLocationWeather('565346'), // Helsinki
+        WeatherResource.getLocationWeather('560743'), // Dublin
+        WeatherResource.getLocationWeather('9807') // Vancouver
       ])
       commit(SET_WEATHER_DATA, data)
     } catch (error) {
